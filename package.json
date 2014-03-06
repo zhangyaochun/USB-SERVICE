@@ -1,10 +1,10 @@
 {
-    "name" : "USB",
+    "name" : "USB-SERVICE",
     "version" : "1.0.1",
-    "description" : "Put your description for this project here.",
+    "description" : "USB-SERVICE.",
     "repository" : {
         "type" : "git",
-        "url" : ""
+        "url" : "https://github.com/zhangyaochun/USB-SERVICE"
     },
     "dependencies" : {},
     "devDependencies" : {
