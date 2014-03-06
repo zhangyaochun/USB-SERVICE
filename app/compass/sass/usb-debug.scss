@@ -1,0 +1,567 @@
+@import "../../thirdparty/Adonis/sass/standardColors";
+@import "../../thirdparty/Adonis/sass/reset";
+@import "../../thirdparty/Adonis/sass/layout";
+@import "../../thirdparty/Adonis/sass/typography";
+@import "../../thirdparty/Adonis/sass/form";
+
+@import "usb-debug/*.png";
+@import "compass/css3";
+@import "compass/css3/user-interface";
+
+
+html,
+body {
+    background-color: #f6f6f6;
+    height: 399px;
+    overflow: hidden;
+    width: 100%;
+}
+
+a,
+span,
+.link {
+    &:hover {
+        text-decoration: none;
+    }
+
+    &:focus {
+        outline: none;
+        text-decoration: none;
+    }
+}
+
+.u-shadow {
+    @include single-box-shadow(0, 1px, 5px, false, #cacaca, false);
+}
+
+.u-select-view {
+    display: none;
+    height: 354px;
+    position: relative;
+    padding-top: 10px;
+
+    .describe {
+        display: block;
+        margin-bottom: 10px;
+        padding-left: 20px;
+    }
+
+    .select {
+        color: #505050;
+        list-style: none;
+        margin: 0 auto;
+        width: 640px;
+
+        li {
+            cursor: pointer;
+            float: left;
+            height: 140px;
+            overflow: hidden;
+            position: relative;
+            width: 200px;
+
+            &.system {
+
+                @each $logo in gingerbread, ics, jeallybean, miuios, meizu, howto{
+                    &.#{$logo} {
+                        .top {
+                            @include usb-debug-sprite(#{$logo});
+                            height: usb-debug-sprite-height(#{$logo});
+                            position: absolute;
+                            width: usb-debug-sprite-width(#{$logo});
+                        }
+                    }
+                }
+
+                &.gingerbread, &.miuios, &.ics, &.meizu{
+                    margin-right: 20px;
+                }
+
+                &.gingerbread, &.ics, &.jeallybean {
+                    margin-bottom: 20px;
+                }
+
+                &.howto {
+                    a {
+                        color: #505050;
+                        display: block;
+                        height: 100%;
+                        font-size: 14px;
+                        width: 100%;
+                    }
+                }
+
+                .title {
+                    background-color: white;
+                    height: 30px;
+                    line-height: 30px;
+                    position: relative;
+                    text-align: center;
+                    top: 110px;
+                }
+            }
+        }
+    }
+}
+
+
+.u-footer-view {
+    display: none;
+    height: 45px;
+    padding-right: 20px;
+    vertical-align: top;
+    width: 680px;
+
+    .feedback,
+    .button-return {
+        @include inline-block();
+
+        cursor: pointer;
+        float: right;
+    }
+
+    .feedback {
+        height: 35px;
+        line-height: 35px;
+    }
+
+    .button-return {
+        @include usb-debug-sprite(return);
+        display: none;
+        height: usb-debug-sprite-height(return);
+        line-height: 30px;
+        margin-left: 10px;
+        text-align: center;
+        width: usb-debug-sprite-width(return);
+
+        *margin-right: 20px;
+        _margin-right:10px;
+
+        &.hover {
+            @include usb-debug-sprite(return-hover);
+        }
+
+        &.press {
+            @include usb-debug-sprite(return-press);
+        }
+    }
+}
+
+.u-feedback-ctn {
+    display: none;
+    height: 339px;
+    position: relative;
+    margin: 15px auto 0;
+    width: 600px;
+
+    *margin-top: 25px;
+
+    .describe {
+        @include inline-block();
+    }
+
+    .left {
+        @include inline-block();
+        float: left;
+        width: 205px;
+
+        .bg {
+            @include usb-debug-sprite(usb-quick);
+            height: 310px;
+            width: 180px;
+        }
+    }
+
+    .right {
+        @include inline-block();
+        padding-top: 30px;
+        vertical-align: top;
+
+        .message {
+
+            .body {
+                height: 130px;
+                line-height: 130px;
+                margin-bottom: 20px;
+                margin-top: 20px;
+
+                .not-a-number,
+                .connect-error,{
+                    display: none;
+                }
+
+                .qrbg {
+                    @include inline-block();
+                    @include usb-debug-sprite(qr);
+                    height: usb-debug-sprite-height(qr);
+                    margin-left: 25px;
+                    width: usb-debug-sprite-width(qr);
+
+                    *vertical-align: top;
+                    *margin-top: 15px;
+                }
+
+                .huo {
+                    @include usb-debug-sprite(huo);
+                    @include inline-block();
+                    height: usb-debug-sprite-height(huo);
+                    margin-left: 25px;
+                    width: usb-debug-sprite-width(huo);
+                }
+
+                .short-url {
+                    @include inline-block();
+                    font-size: 14px;
+                    height: 40px;
+                    line-height: 20px;
+                    margin-left: 20px;
+                    width: 156px;
+
+                    *vertical-align: top;
+                    *margin-top: 40px;
+
+                    .w-text-info, .url {
+                        @include inline-block();
+                    }
+                }
+            }
+
+            .send-message {
+                height: 45px;
+
+                *left: 10px;
+                *position: relative;
+                *width: 380px;
+
+                .button-send {
+                    *margin-left: 10px;
+                }
+            }
+        }
+
+        .href-container {
+            .href {
+                display: block;
+                line-height: 25px;
+
+                .img {
+                    @include inline-block();
+                    @include usb-debug-sprite(bullet-arrow);
+
+                    height: usb-debug-sprite-height(bullet-arrow);
+                    margin-right: 10px;
+                    vertical-align: middle;
+                    width: usb-debug-sprite-width(bullet-arrow);
+
+                    _font-size: 10px;
+                    _line-height: 10px;
+                }
+
+                .wording {
+                    @include inline-block();
+                    vertical-align: middle;
+                }
+
+                .qq {
+                    @include inline-block();
+                    @include usb-debug-sprite(qq);
+                    height: usb-debug-sprite-height(qq);
+                    margin-left: 5px;
+                    margin-top: -4px;
+                    vertical-align: middle;
+                    width: usb-debug-sprite-width(qq);
+                }
+            }
+        }
+    }
+}
+
+.u-detail-view {
+    display: none;
+    height: 399px;
+    margin: 15px auto;
+    padding: 15px;
+    position: relative;
+    width: 680px;
+
+    .describe,
+    .return {
+        @include inline-block();
+        color: $textNormal;
+        font-size: 14px;
+    }
+
+    .user-detail {
+        font-size: 14px;
+        height: 280px;
+        width: 650px;
+    }
+}
+
+input {
+    _height: 24px;
+    _line-height: 24px;
+    _margin-right: 5px;
+    _width: 140px;
+}
+
+.u-slider-view {
+    background-color: #EAEAEA;
+    display: none;
+    height: 399px;
+    position: relative;
+
+    .header {
+        height: 45px;
+        vertical-align: top;
+
+        .desc {
+            display: inline-block;
+            font-size: 14px;
+            margin-left: 15px;
+            margin-top: 15px;
+        }
+
+        /*.next,*/ .return, .general{
+            cursor: pointer;
+            display: inline-block;
+            margin-left: 20px;
+        }
+
+        /*.next {
+            display: none;
+            height: 30px;
+            text-align: center;
+            padding-top: 5px;
+            width: 120px;
+
+            *vertical-align: middle;
+            *padding-top: 10px;
+            *height: 25px;
+        }*/
+
+        .next {
+            @include usb-debug-sprite(next);
+            cursor: pointer;
+            height: usb-debug-sprite-height(next);
+            left: 195px;
+            line-height: 30px;
+            position: absolute;
+            text-align: center;
+            top: 10px;
+            width: usb-debug-sprite-width(next);
+
+            *margin-right: 20px;
+            _margin-right:10px;
+
+            &.hover {
+                @include usb-debug-sprite(next-hover);
+            }
+
+            &.press {
+                @include usb-debug-sprite(next-press);
+            }
+        }
+
+        .return {
+            margin-top: 15px;
+        }
+
+        .checkusb {
+
+            @include usb-debug-sprite(return);
+            cursor: pointer;
+            height: usb-debug-sprite-height(return);
+            line-height: 30px;
+            position: absolute;
+            right: 10px;
+            text-align: center;
+            top: 10px;
+            width: usb-debug-sprite-width(return);
+
+            *margin-right: 20px;
+            _margin-right:10px;
+
+            &.hover {
+                @include usb-debug-sprite(return-hover);
+            }
+
+            &.press {
+                @include usb-debug-sprite(return-press);
+            }
+        }
+
+        a {
+            display: inline-block;
+            line-height: 25px;
+            margin-left: 5px;
+
+            .qq {
+                @include inline-block();
+                @include usb-debug-sprite(qq);
+                height: usb-debug-sprite-height(qq);
+                margin-left: 5px;
+                margin-top: -4px;
+                vertical-align: middle;
+                width: usb-debug-sprite-width(qq);
+            }
+        }
+    }
+
+    .content {
+        height: 347px;
+        overflow: hidden;
+        vertical-align: top;
+        width: 680px;
+
+        @each $arrow in right-arrow, left-arrow{
+            .#{$arrow} {
+                @include usb-debug-sprite(#{$arrow});
+                cursor: pointer;
+                height: usb-debug-sprite-height(#{$arrow});
+                width: usb-debug-sprite-width(#{$arrow});
+                position: absolute;
+                right: 0;
+                top: 140px;
+
+                 _right: -1px;
+            }
+
+            .#{$arrow}-hover {
+                @include usb-debug-sprite(#{$arrow}-hover);
+            }
+
+            .#{$arrow}-press {
+                @include usb-debug-sprite(#{$arrow}-press);
+            }
+        }
+
+        .left-arrow {
+            display: none;
+            left: 0;
+
+            _left: -1px;
+        }
+
+        .slider {
+            display: block;
+            height: 344px;
+            list-style: none;
+            position: relative;
+
+            li {
+                background-color: #FFF;
+                float: left;
+                height: 334px;
+                margin: 5px 5px;
+                overflow: hidden;
+                position: relative;
+                text-align: center;
+                width: 250px;
+
+                img {
+                    height: 334px;
+                    vertical-align: top;
+                    width: 250px;
+                }
+
+                .loading {
+                    height: 46px;
+                    margin-top: 140px;
+                    vertical-align: top;
+                    width: 46px;
+                }
+            }
+
+            .last_page {
+                background-color: #f6f6f6;
+            }
+        }
+
+        .last_page,
+        &.last_page {
+
+            text-align: center;
+
+            .wanxiaodou {
+                @include usb-debug-sprite(doubt);
+                height: usb-debug-sprite-height(doubt);
+                margin: 50px auto 0;
+                width: usb-debug-sprite-width(doubt);
+            }
+
+            .help {
+                .link {
+                    padding-left: 33px;
+                    text-align: left;
+                }
+            }
+
+            span, a {
+                cursor: pointer;
+                display: block;
+                line-height: 25px;
+
+                .img {
+                    @include inline-block();
+                    @include usb-debug-sprite(bullet-arrow);
+
+                    height: usb-debug-sprite-height(bullet-arrow);
+                    margin-right: 10px;
+                    vertical-align: middle;
+                    width: usb-debug-sprite-width(bullet-arrow);
+
+                    _font-size: 10px;
+                    _line-height: 10px;
+                }
+
+                .wording {
+                    @include inline-block();
+                    vertical-align: middle;
+                }
+
+                .qq {
+                    @include inline-block();
+                    @include usb-debug-sprite(qq);
+                    height: usb-debug-sprite-height(qq);
+                    margin-left: 5px;
+                    margin-top: -4px;
+                    vertical-align: middle;
+                    width: usb-debug-sprite-width(qq);
+                }
+            }
+        }
+
+        &.last_page {
+            .help {
+                .link {
+                    padding-left: 241px;
+                    text-align: left;
+                }
+            }
+        }
+    }
+
+    .scrollbar {
+        height: 8px;
+        position: relative;
+
+        .track {
+
+            background: #D8D8D8;
+            height: 8px;
+            position: relative;
+            width: 100%;
+
+            .thumb {
+                background: #9B9B9B;
+                cursor: pointer;
+                height: 7px;
+                left: 0;
+                overflow: hidden;
+                position: absolute;
+            }
+        }
+    }
+}
+
