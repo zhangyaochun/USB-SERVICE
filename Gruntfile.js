@@ -76,6 +76,7 @@ module.exports = function (grunt) {
             }
         },
         clean : {
+            i18n : ['usb-service'],
             dist : ['<%= paths.tmp %>', '<%= paths.dist %>'],
             server : '<%= paths.tmp %>'
         },
@@ -274,15 +275,20 @@ module.exports = function (grunt) {
     //在dist完成后去打包一份nls文件夹
     grunt.registerTask('processI18n',function(nls){
         
-        var nlsPath = nls;
+        var nlsPath = 'usb-service/' + nls;
 
-        //如果存在,删掉它
-        if(fs.existsSync(nlsPath)){
-            rimraf.sync(nlsPath);
+        //如果一级不存在，就创建
+        if(!fs.existsSync('usb-service')){
+            fs.mkdirSync('usb-service');
         }
 
-        //再创建
+        //如果存在,删掉它
+        if(fs.existsSync('usb-service') && fs.existsSync(nlsPath)){
+            rimraf.sync(nlsPath);
+        }
+        //创建一级
         fs.mkdirSync(nlsPath);
+
 
         //多传一个nls，来copy不一样的文件把
         copyFolderRecursive(pathConfig.dist,nlsPath,nls);
@@ -311,7 +317,8 @@ module.exports = function (grunt) {
             'imagemin',
             'htmlmin',
             'rev',
-            'usemin'
+            'usemin',
+            'clean:i18n'
         ];
 
         nlss.forEach(function(nls){

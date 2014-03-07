@@ -7,3 +7,5 @@
 /test/output/
 /.sass-cache/
 /.tmp/
+/tmp/
+/usb-service/
