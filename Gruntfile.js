@@ -286,7 +286,7 @@ module.exports = function (grunt) {
         if(fs.existsSync('usb-service') && fs.existsSync(nlsPath)){
             rimraf.sync(nlsPath);
         }
-        //创建一级
+        //创建二级
         fs.mkdirSync(nlsPath);
 
 
