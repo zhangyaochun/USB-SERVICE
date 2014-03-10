@@ -4,7 +4,7 @@
 /node_modules/
 /app/components
 /dist/
-/test/output/
+/test/
 /.sass-cache/
 /.tmp/
 /tmp/
