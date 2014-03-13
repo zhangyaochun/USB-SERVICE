@@ -39,8 +39,8 @@
                     </div>
                     <div class="describe">访问豌豆荚帮助中心，获取更多帮助：</div>
                     <div class="href-container">
-                        <a class="href usb-help" href="http://help.wandoujia.com/entries/21550377-usb" target="_default"><div class="img"></div><span class="wording">查看打开「USB 调试」的帮助</span></a>
-                        <a class="href usb-bbs" href="http://www.wandoujia.com/help/?do=topic&id=23884668" target="_default"><div class="img"></div><span class="wording">发帖求助，让专业的豌豆们帮您解答</span></a>
+                        <a class="href usb-help" href="http://www.wandoujia.com/help/?do=topic&id=23884668" target="_default"><div class="img"></div><span class="wording">查看打开「USB 调试」的帮助</span></a>
+                        <a class="href usb-bbs" href="http://www.wandoujia.com/help/?do=add_ticket" target="_default"><div class="img"></div><span class="wording">发帖求助，让专业的豌豆们帮您解答</span></a>
                     </div>
                 </div>
                 <div class="right qr">
@@ -76,6 +76,35 @@
                     </div>
                 </div>
             </div>
+        </script>
+        <script type="text/template" id="selectBrandView">
+            <span class="describe">请按手机品牌选择对应的教程哦~</span>
+                <ul class="select brands w-cf">
+                <%
+                    _.each(brands, function (brand) {
+                %>
+                    <li class="u-shadow brand <%= brand.className %>">
+                        <div class="color"></div>
+                        <div class="h5 title"><%= brand.name %></div>
+                    </li>
+                <%
+                    });
+                %>
+                </ul>
+                <div class="system-container">
+                    <ul class="select systems w-cf">
+                    <%
+                        _.each(systems, function (system) {
+                    %>
+                        <li class="u-shadow system <%= system.className %>">
+                            <div class="color"></div>
+                            <div class="h5 title"><%= system.name %></div>
+                        </li>
+                    <%
+                        });
+                    %>
+                    </ul>
+                </div>
         </script>
         <script type="text/template" id="selectView">
                 <span class="describe w-text-info">请根据您的系统版本选择：</span>
@@ -116,34 +145,49 @@
         </script>
         <script type="text/template" id="sliderViewBody">
             <div class="content view-box">
-                <ul class="slider overview">
-                <% for(var i = 0; i < pic_length; i++ ) { %>
+                <div class="overview">
+                <% for(var n = 0; n < data.length; n ++ ) { %>
+                     <ul class="slider">
+                        <% if (n > 0) {%>
+                            <li class="start">
+                                <div class="help">
+                                    <h5>教程 <%= n + 1 %></h5>
+                                    <span class="link">
+                                        <span class="wording w-text-info">前一个教程不对？</span>
+                                    </span>
+                                    <span class="link">
+                                        <span class="wording w-text-info">第 <%= n + 1%> 个教程开始咯~</span>
+                                    </span>
+                                </div>
+                            </li>
+                        <% } %>
+                        <% for(var i = 0; i < data[n].guide_content.length; i++ ) { %>
 
-                    <li class="u-shadow">
-                        <img src="images/loading.gif" class="loading" />
-                    </li>
+                            <li class="u-shadow">
+                                <img src="images/loading.gif" class="loading"></img>
+                            </li>
 
-                <% } %>
+                        <% } %>
 
-                    <li class="last_page u-shadow">
-                        <div class="wanxiaodou"></div>
-                        <div class="help">
-                            <h5>此教程是否能帮到您？</h5>
-                            <span class="link">
-                                <span class="img"></span>
-                                <% if (course_length === 1) { %>
-                                <span class="wording general">查看通用教程</span>
-                                <% } else { %>
-                                <span class="wording next">教程不对，换一个试试</span>
-                                <% } %>
-                            </span>
-                            <span class="link">
-                                <span class="img"></span>
-                                <span class="wording download">没看懂，试试别的办法</span>
-                            </span>
-                        </div>
-                    </li>
-                </ul>
+                        <% if (n === data.length - 1) { %>
+                            <li class="last_page u-shadow">
+                                <div class="wanxiaodou"></div>
+                                <div class="help">
+                                    <h5>此教程是否能帮到您？</h5>
+                                    <span class="link">
+                                        <span class="img"></span>
+                                        <span class="wording general">查看通用教程</span>
+                                    </span>
+                                    <span class="link">
+                                        <span class="img"></span>
+                                        <span class="wording download">没看懂，试试别的办法</span>
+                                    </span>
+                                </div>
+                            </li>
+                        <% } %>
+                        </ul>
+                    <% } %>
+                </div>
                 <div class="left-arrow u-shadow"></div>
                 <div class="right-arrow u-shadow"></div>
             </div>
@@ -181,11 +225,9 @@
             <h6 class="describe w-text-info">请将以下信息复制下来，粘贴到和豌豆工程师的聊天窗口中发给我们</h6>
             <textarea class="user-detail"></textarea>
         </script>
-        
         <!--[if IE 6]>
             <script src="javascripts/DD_belatedPNG_0.0.8a-min.js"></script>
         <![endif]-->
-
         <!-- build:js javascripts/usb-debug.js -->
         <script type="text/javascript" src="components/jquery/jquery.js"></script>
         <script type="text/javascript" src="javascripts/jquery.color.js"></script>
@@ -193,6 +235,5 @@
         <script type="text/javascript" src="javascripts/usb-debug.js"></script>
         <script type="text/javascript" src="javascripts/jquery.scrollbar.js"></script>
         <!-- endbuild -->
-
     </body>
 </html>
