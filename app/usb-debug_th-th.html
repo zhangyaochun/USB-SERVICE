@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <title>Wandoujia 2.0 USB Debug</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="stylesheet" type="text/css" href="stylesheets/usb-debug.css" />
+    </head>
+    <body>
+        <div class="tmp_select" onselectstart="javascript:return false;"></div>
+        <div class="tmp_silder" onselectstart="javascript:return false;"></div>
+        <div class="tmp_detail"></div>
+        <div class="tmp_footer w-cf"  onselectstart="javascript:return false;"></div>
+        <script type="text/template" id="footerView">
+            <div class="button-return">ย้อนกลับ</div>
+        </script>
+        <script type="text/template" id="selectView">
+                <span class="describe w-text-info">กรุณาเลือกตามรุ่น Android OS ของคุณ:</span>
+                <ul class="select systems w-cf">
+                <%
+                    _.each(systems, function (system) {
+                %>
+                    <li class="u-shadow system <%= system.className %>">
+                        <div class="top"></div>
+                        <div class="h5 title"><%= system.name %></div>
+                    </li>
+                <%
+                    });
+                %>
+                </ul>
+        </script>
+        <script type="text/template" id="sliderViewHead">
+            <div class="header">
+                <span class="desc">ทําตามคู่มือเพื่อตรวจแก้ข้อบกพร่องของ USB</span>
+                <span class="return link">ย้อนกลับ</span>
+                <span class="next">เลือกคู่มืออื่นๆ</span>
+                <span class="general link">ดูคู่มือทั้งหมด</span>
+                <span class="checkusb">ปิดอยู่</span>
+            </div>
+        </script>
+        <script type="text/template" id="sliderViewBody">
+            <div class="content view-box">
+                <ul class="slider overview">
+                <% for(var i = 0; i < pic_length; i++ ) { %>
+
+                    <li class="u-shadow">
+                        <img src="images/loading.gif" class="loading" />                    
+                    </li>
+
+                <% } %>
+
+                    <li class="last_page u-shadow">
+                        <div class="wanxiaodou"></div>
+                        <div class="help">
+                            <h5>ยังคงไม่ทำงาน?</h5>
+                            <span class="link">
+                                <span class="img"></span>
+                                <% if (course_length === 1) { %>
+                                <span class="wording general">View all tutorials</span>
+                                <% } else { %>
+                                <span class="wording next">เลือกคู่มืออื่นๆ</span>
+                                <% } %>
+                            </span>
+                            <span class="link">
+                                <span class="img"></span>
+                                <a class="wording zendesk" target="_blank" href="https://snappea.zendesk.com/hc/en-us/articles/201062207--Official-How-do-I-enable-USB-Debugging-">Go to Help Center</a>
+                            </span>
+                        </div>
+                    </li>
+                </ul>
+                <div class="left-arrow u-shadow"></div>
+                <div class="right-arrow u-shadow"></div>
+            </div>
+            <div class="scrollbar">
+                <div class="track">
+                    <div class="thumb"></div>
+                </div>
+            </div>
+        </script>
+        <script type="text/template" id="sliderViewLastPage">
+            <div class="content last_page">
+                <div class="wanxiaodou"></div>
+                <div class="help">
+                    <h5>ยังคงไม่ทำงาน?</h5>
+                    <span class="link">
+                        <span class="img"></span>
+                        <span class="wording general">ดูคู่มือทั้งหมด</span>
+                    </span>
+                    <span class="link">
+                        <span class="img"></span>
+                        <a class="wording zendesk" target="_blank" href="https://snappea.zendesk.com/hc/en-us/articles/201062207--Official-How-do-I-enable-USB-Debugging-">ไปที่ศูนย์ช่วยเหลือ</a>
+                    </span>
+                </div>
+            </div>
+        </script>
+        
+        <!--[if IE 6]>
+            <script src="javascripts/DD_belatedPNG_0.0.8a-min.js"></script>
+        <![endif]-->
+
+        <!-- build:js javascripts/usb-debug_en-us.js -->
+        <script type="text/javascript" src="components/jquery/jquery.js"></script>
+        <script type="text/javascript" src="javascripts/jquery.color.js"></script>
+        <script type="text/javascript" src="components/underscore/underscore.js"></script>
+        <script type="text/javascript" src="javascripts/usb-debug_en-us.js"></script>
+        <script type="text/javascript" src="javascripts/jquery.scrollbar.js"></script>
+        <!-- endbuild -->
+    </body>
+</html>
