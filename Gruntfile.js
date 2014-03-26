@@ -112,7 +112,7 @@ module.exports = function (grunt) {
                     src : [
                         'images/**/*.{webp,gif,png,jpg,jpeg}',
                         'compass/**/*.{sass,scss,png,ttf}',
-                        'thirdparty/**/*'
+                        'thirdpartys/**/*'
                     ]
                 }]
             },
